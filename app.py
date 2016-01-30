@@ -21,6 +21,11 @@ def connect_db():
 def before_request():
     g.db = connect_db()
 
+@app.after_request
+def after_request(response):
+    g.db.close()
+    return response
+
 api.add_resource(Post, '/post', '/post/<int:id>')
 api.add_resource(User, '/user', '/user/<string:id>')
 api.add_resource(Tag, '/tag', '/tag/<string:id>')

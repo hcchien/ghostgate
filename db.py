@@ -1,10 +1,7 @@
-import sqlite3
 from flask import g
 
-DATABASE = '/Users/hcchien/ghostgate/ghost-dev.db'
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = connect_to_database()
-    return db
+class DBI():
+    def query_db(self, query, args=(), one=False):
+        cur = g.db.execute(query, args)
+        rv = [dict((cur.description[idx][0], value) for idx, value in enumerate(row)) for row in cur.fetchall()] 
+        return rv

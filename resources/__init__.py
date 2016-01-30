@@ -1,1 +1,1 @@
-__all__ = ["user", "post", "tag"]
+__all__ = ["user", "post", "tag","dbo"]
