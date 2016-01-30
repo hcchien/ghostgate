@@ -1,7 +1,6 @@
-from flask_restful import Resource
+from resources.dbo import model_resource
 
-class Post(Resource):
-    def get(self):
-        pass
-    def post(self):
-        pass
+class Post(model_resource):
+    def __init__(self):
+        super(Post, self).__init__()
+        self._table = "posts"
