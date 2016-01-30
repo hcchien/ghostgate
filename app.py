@@ -27,7 +27,7 @@ def after_request(response):
     return response
 
 api.add_resource(Post, '/post', '/post/<int:id>')
-api.add_resource(User, '/user', '/user/<string:id>')
+api.add_resource(User, '/user', '/user/<int:id>')
 api.add_resource(Tag, '/tag', '/tag/<string:id>')
 
 app.register_blueprint(api_bp)
